@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
     }
   }, {
     tableName: 'roles',
-    timestamps: true
+    timestamps: false
   });
 
   return Rol;

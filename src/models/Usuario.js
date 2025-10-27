@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
     },
     contraseña: {
       type: DataTypes.STRING,
-      alloNull: false
+      allowNull: false
     }
   }, {
     tableName: 'usuarios',
