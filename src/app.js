@@ -1,18 +1,15 @@
 const express = require('express');
 const { testConnection, sequelize } = require('./db');
-const { Usuario, Rol } = require('./models');
+const rolRoutes = require('./routes/rolRoutes');
 
 const app = express();
 app.use(express.json());
 
-(async () => {
+app.use('/roles', rolRoutes);
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, async () => {
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
   await testConnection();
-
-  await sequelize.sync({ alter: true });
-  console.log('Modelos sincronizados con la base de datos.');
-
-  const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => {
-    console.log(`Servidor escuchando en el puerto ${PORT}`);
-  });
-})();
+});
